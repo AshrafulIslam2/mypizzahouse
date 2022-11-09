@@ -77,6 +77,9 @@ const Header = () => {
           {user?.email ? (
             <>
               <Link className="self-center px-8 py-3 rounded">log Out</Link>
+              <Link className="self-center px-8 py-3 rounded" to="/profile">
+                <img src="" alt="" srcset="" className="rounded-full" />
+              </Link>
             </>
           ) : (
             <>
