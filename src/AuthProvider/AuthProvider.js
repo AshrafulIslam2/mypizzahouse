@@ -5,6 +5,7 @@ const AuthProvider = ({ children }) => {
   const [loader, setLodaer] = useState(true);
   const authinfo = {
     loader,
+    setLodaer,
   };
   return (
     <div>
