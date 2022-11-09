@@ -24,7 +24,7 @@ const Banner = () => {
             <Link
               rel="noopener noreferrer"
               href="#"
-              className="px-8 py-3 text-lg font-semibold rounded bg-blue-400 text-gray-900"
+              className="px-8 py-3 homebtn text-lg font-bold rounded bg-blue-400 text-white"
             >
               Add Review
             </Link>
