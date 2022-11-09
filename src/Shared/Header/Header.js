@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(authContext);
+  const { user, logOut } = useContext(authContext);
   const [navbar, setnavbar] = useState(false);
   return (
     <header className="p-2 bg-gray-800 text-gray-100">
@@ -76,7 +76,9 @@ const Header = () => {
         <div className="items-center flex-shrink-0 hidden lg:flex">
           {user?.email ? (
             <>
-              <Link className="self-center px-8 py-3 rounded">log Out</Link>
+              <Link className="self-center px-8 py-3 rounded" onClick={logOut}>
+                log Out
+              </Link>
               <Link className="self-center px-8 py-3 rounded" to="/profile">
                 <img
                   src={user.photoURL}

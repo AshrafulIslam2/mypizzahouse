@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
   const { loginwithEmail, loginwithgoogle } = useContext(authContext);
   const handleloginwithemail = (event) => {
     event.preventDefault();
@@ -16,6 +19,7 @@ const Login = () => {
         console.log(user);
         form.reset();
         toast("Login successFull !");
+        navigate("/service");
       })
       .catch((error) => {
         console.log("this is error", error);
@@ -105,7 +109,7 @@ const Login = () => {
         <div className="space-y-2">
           <div>
             <button
-              type="button"
+              type="submit"
               className="w-full px-8 py-3 font-semibold rounded-md bg-blue-400 text-gray-900"
             >
               Sign in
