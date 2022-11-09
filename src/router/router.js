@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Home from "../pages/Home/Home";
 import Service from "../pages/Home/Service/Service";
+import SigleService from "../pages/Home/Service/sigleserviedetails/SigleService";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
             <Profile></Profile>
           </PriveteRoute>
         ),
+      },
+      {
+        path: "/service/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/api/services/${params.id}`),
+        element: <SigleService></SigleService>,
       },
     ],
   },

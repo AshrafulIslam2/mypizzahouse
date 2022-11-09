@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Allservice = ({ service }) => {
-  const { img, title, description } = service;
+  const { img, title, description, _id } = service;
   return (
     <div className="max-w-lg mx-auto my-10 rounded-md shadow-md bg-gray-800 text-gray-100">
       <img
@@ -14,12 +15,13 @@ const Allservice = ({ service }) => {
           <h2 className="text-3xl font-semibold tracking-wide">{title}</h2>
           <p className="text-white">{description.slice(0, 70)}...</p>
         </div>
-        <button
+        <Link
           type="button"
           className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md homebtn text-white"
+          to={`/service/${_id}`}
         >
           Read more
-        </button>
+        </Link>
       </div>
     </div>
   );
