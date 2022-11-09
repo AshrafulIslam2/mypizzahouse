@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Profile = () => {
+  const { user } = useContext(authContext);
+  console.log(user.displayName);
   return (
-    <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 bg-cyan-300 text-black">
+    <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 bg-cyan-300 text-black my-14">
       <div className="flex flex-col justify-between">
         <div className="space-y-2">
           <h2 className="text-4xl font-extrabold leading-tight lg:text-5xl">
@@ -27,6 +30,7 @@ const Profile = () => {
             type="text"
             placeholder=""
             className="w-full p-3 rounded bg-gray-800 text-white"
+            defaultValue={user.displayName}
           />
         </div>
         <div>
@@ -36,7 +40,9 @@ const Profile = () => {
           <input
             id="email"
             type="email"
-            className="w-full p-3 rounded bg-gray-800 text-white"
+            className="w-full p-3 rounded  bg-gray-800 text-white"
+            readOnly
+            defaultValue={user.email}
           />
         </div>
         <div>
@@ -47,6 +53,7 @@ const Profile = () => {
             id="text"
             type="text"
             className="w-full p-3 rounded bg-gray-800 text-white"
+            defaultValue={user.photoURL}
           />
         </div>
         <button

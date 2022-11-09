@@ -5,6 +5,7 @@ import Service from "../pages/Home/Service/Service";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
+import PriveteRoute from "../privetroute/PriveteRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
 
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PriveteRoute>
+            <Profile></Profile>
+          </PriveteRoute>
+        ),
       },
     ],
   },
