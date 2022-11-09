@@ -17,7 +17,7 @@ const ServiceForHome = ({ service }) => {
         </div>
         <Link
           type="button"
-          to={`${_id}`}
+          to={`/service/${_id}`}
           className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md homebtn text-white"
         >
           Read more
