@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(authContext);
   const [navbar, setnavbar] = useState(false);
   return (
     <header className="p-2 bg-gray-800 text-gray-100">
@@ -24,7 +26,7 @@ const Header = () => {
           <li className="flex">
             <Link
               rel="noopener noreferrer"
-              to="/home"
+              to="/"
               className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-blue-400 border-blue-400"
             >
               Home
@@ -39,30 +41,57 @@ const Header = () => {
               Service
             </Link>
           </li>
-          <li className="flex">
-            <Link
-              rel="noopener noreferrer"
-              to="/addservice"
-              className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
-            >
-              Add Service
-            </Link>
-          </li>
+          {user?.email && (
+            <>
+              <li className="flex">
+                <Link
+                  rel="noopener noreferrer"
+                  to="/addservice"
+                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+                >
+                  Add Service
+                </Link>
+              </li>
+              <li className="flex">
+                <Link
+                  rel="noopener noreferrer"
+                  to="/myreview"
+                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+                >
+                  My Review
+                </Link>
+              </li>
+            </>
+          )}
           <li className="flex">
             <Link
               rel="noopener noreferrer"
               to="/myreview"
               className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
             >
-              My Review
+              Blogs
             </Link>
           </li>
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">
-          <button className="self-center px-8 py-3 rounded">Sign in</button>
-          <button className="self-center px-8 py-3 font-semibold rounded bg-blue-400 text-gray-900">
-            Sign up
-          </button>
+          {user?.email ? (
+            <>
+              <Link className="self-center px-8 py-3 rounded">log Out</Link>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link className="self-center px-8 py-3 rounded" to="/login">
+                Login in
+              </Link>
+              <Link
+                className="self-center px-8 py-3 font-semibold rounded bg-blue-400 text-gray-900"
+                to="/signup"
+              >
+                Sign up
+              </Link>
+            </>
+          )}
         </div>
         <div className="lg:hidden relative">
           <button className="p-4  lg:hidden" onClick={() => setnavbar(!navbar)}>
@@ -104,22 +133,35 @@ const Header = () => {
                 Service
               </Link>
             </li>
-            <li className="flex">
-              <Link
-                rel="noopener noreferrer"
-                to="/addservice"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
-              >
-                Add Service
-              </Link>
-            </li>
+            {user?.email && (
+              <>
+                <li className="flex">
+                  <Link
+                    rel="noopener noreferrer"
+                    to="/addservice"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+                  >
+                    Add Service
+                  </Link>
+                </li>
+                <li className="flex">
+                  <Link
+                    rel="noopener noreferrer"
+                    to="/myreview"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+                  >
+                    My Review
+                  </Link>
+                </li>
+              </>
+            )}
             <li className="flex">
               <Link
                 rel="noopener noreferrer"
                 to="/myreview"
                 className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
               >
-                My Review
+                Blogs
               </Link>
             </li>
           </ul>
