@@ -19,6 +19,8 @@ const Addreviews = () => {
       service,
       rating,
       review,
+      img,
+      title,
     };
     fetch("http://localhost:4000/api/reviews", {
       method: "POST",
@@ -26,7 +28,10 @@ const Addreviews = () => {
       body: JSON.stringify(allreview),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        form.reset();
+        console.log(data);
+      })
       .catch((err) => console.error(err));
   };
   return (

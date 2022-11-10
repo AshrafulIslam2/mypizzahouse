@@ -18,7 +18,7 @@ const Register = () => {
         console.log(user);
         form.reset();
         toast("Register successFull !");
-        navigate("/service");
+
         // navigate(from, { replace: true });
       })
       .catch((error) => {

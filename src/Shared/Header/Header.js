@@ -1,10 +1,18 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
+  const navigate = useNavigate();
   const { user, logOut } = useContext(authContext);
   const [navbar, setnavbar] = useState(false);
+  const logouthandler = () => {
+    logOut().then(
+      navigate("/service").catch((error) => {
+        console.log("this is error", error);
+      })
+    );
+  };
   return (
     <header className="p-2 bg-gray-800 text-gray-100">
       <div className="container flex justify-between h-16 mx-auto">
@@ -66,7 +74,7 @@ const Header = () => {
           <li className="flex">
             <Link
               rel="noopener noreferrer"
-              to="/myreview"
+              to="/blog"
               className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
             >
               Blogs
@@ -76,7 +84,10 @@ const Header = () => {
         <div className="items-center flex-shrink-0 hidden lg:flex">
           {user?.email ? (
             <>
-              <Link className="self-center px-8 py-3 rounded" onClick={logOut}>
+              <Link
+                className="self-center px-8 py-3 rounded"
+                onClick={logouthandler}
+              >
                 log Out
               </Link>
               <Link className="self-center px-8 py-3 rounded" to="/profile">
@@ -169,7 +180,7 @@ const Header = () => {
             <li className="flex">
               <Link
                 rel="noopener noreferrer"
-                to="/myreview"
+                to="/blog"
                 className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
               >
                 Blogs
