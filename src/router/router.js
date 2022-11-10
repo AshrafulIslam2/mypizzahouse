@@ -8,6 +8,7 @@ import Service from "../pages/Home/Service/Service";
 import SigleService from "../pages/Home/Service/sigleserviedetails/SigleService";
 import Login from "../pages/Login/Login";
 import Myreview from "../pages/MyReview/Myreview";
+import ReviewTable from "../pages/MyReview/ReviewTable";
 import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
 import PriveteRoute from "../privetroute/PriveteRoute";
@@ -49,7 +50,9 @@ const router = createBrowserRouter([
       {
         path: "/service/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/api/services/${params.id}`),
+          fetch(
+            `https://my-pizza-house-server-side.vercel.app/api/services/${params.id}`
+          ),
         element: <SigleService></SigleService>,
       },
       {
@@ -63,7 +66,9 @@ const router = createBrowserRouter([
       {
         path: "/addreviews/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/api/services/${params.id}`),
+          fetch(
+            `https://my-pizza-house-server-side.vercel.app/api/services/${params.id}`
+          ),
         element: (
           <PriveteRoute>
             <Addreviews></Addreviews>
@@ -75,6 +80,14 @@ const router = createBrowserRouter([
         element: (
           <PriveteRoute>
             <Myreview></Myreview>
+          </PriveteRoute>
+        ),
+      },
+      {
+        path: "/reviewtable",
+        element: (
+          <PriveteRoute>
+            <ReviewTable></ReviewTable>
           </PriveteRoute>
         ),
       },

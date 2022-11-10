@@ -22,7 +22,7 @@ const AddService = () => {
       Spicy: "Mild",
       Slice: slice,
     };
-    fetch("http://localhost:4000/api/services", {
+    fetch("https://my-pizza-house-server-side.vercel.app/api/services", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(service),

@@ -9,7 +9,9 @@ const Myreview = () => {
   const [myreview, Setreview] = useState([]);
   UseSetTile("your Review");
   useEffect(() => {
-    fetch(`http://localhost:4000/api/reviews?email=${user?.email}`)
+    fetch(
+      `https://my-pizza-house-server-side.vercel.app/api/reviews?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => Setreview(data))
       .catch((err) => console.error(err));
@@ -17,13 +19,26 @@ const Myreview = () => {
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:4000/api/reviews/${id}`, {
+    fetch(`https://my-pizza-house-server-side.vercel.app/api/reviews/${id}`, {
       method: "DELETE",
     }).then((res) =>
       res.json().then((data) => {
         const remaining = myreview.filter((myrv) => myrv._id !== id);
         Setreview(remaining);
         toast("Deleted successFull !");
+      })
+    );
+  };
+  const handleupdate = (id, rating, review) => {
+    fetch(`https://my-pizza-house-server-side.vercel.app/api/reviews/${id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ rating, review }),
+    }).then((res) =>
+      res.json().then((data) => {
+        const remaining = myreview.filter((myrv) => myrv._id !== id);
+        const updateing = myreview.find((myrv) => myrv._id === id);
+        Setreview(...remaining, updateing);
       })
     );
   };
@@ -51,6 +66,7 @@ const Myreview = () => {
                 <ReviewTable
                   review={review}
                   handleDelete={handleDelete}
+                  handleupdate={handleupdate}
                 ></ReviewTable>
               ))}
             </table>

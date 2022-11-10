@@ -6,7 +6,9 @@ const PriveteRoute = ({ children }) => {
   const { user, loader } = useContext(authContext);
   const location = useLocation();
   if (loader) {
-    return;
+    return (
+      <div className="w-16 h-16 border-4 border-dashed  mx-auto rounded-full animate-spin border-red-400"></div>
+    );
   }
   if (user) {
     return children;

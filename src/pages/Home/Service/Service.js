@@ -8,7 +8,7 @@ const Service = () => {
   console.log(loader);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/services")
+    fetch("https://my-pizza-house-server-side.vercel.app/api/services")
       .then((res) => res.json())
       .then((data) => SetService(data));
   }, []);

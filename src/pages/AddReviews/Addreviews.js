@@ -27,7 +27,7 @@ const Addreviews = () => {
       img,
       title,
     };
-    fetch("http://localhost:4000/api/reviews", {
+    fetch("https://my-pizza-house-server-side.vercel.app/api/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(allreview),

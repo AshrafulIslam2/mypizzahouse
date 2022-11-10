@@ -9,7 +9,7 @@ const Home = () => {
   const [service, SetServiceItem] = useState([]);
   UseSetTile("Home");
   useEffect(() => {
-    fetch("http://localhost:4000/api/limitservices")
+    fetch("https://my-pizza-house-server-side.vercel.app/api/limitservices")
       .then((res) => res.json())
       .then((data) => SetServiceItem(data));
   }, []);

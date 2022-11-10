@@ -8,7 +8,9 @@ const SigleService = () => {
     useLoaderData();
   const [servicRevie, SetserviceReview] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:4000/api/reviews/single?service=${_id}`)
+    fetch(
+      `https://my-pizza-house-server-side.vercel.app/api/reviews/single?service=${_id}`
+    )
       .then((res) => res.json())
       .then((data) => SetserviceReview(data))
       .catch((err) => console.error(err));
