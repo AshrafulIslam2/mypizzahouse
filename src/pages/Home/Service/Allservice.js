@@ -1,15 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const Allservice = ({ service }) => {
   const { img, title, description, _id } = service;
   return (
     <div className="max-w-lg mx-auto my-10 rounded-md shadow-md bg-gray-800 text-gray-100">
-      <img
-        src={img}
-        alt=""
-        className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500"
-      />
+      <PhotoProvider>
+        <PhotoView src={img}>
+          <img
+            src={img}
+            alt=""
+            className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500"
+          />
+        </PhotoView>
+      </PhotoProvider>
+
       <div className="flex flex-col justify-between p-6 space-y-8">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold tracking-wide">{title}</h2>
