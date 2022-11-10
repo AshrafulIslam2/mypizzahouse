@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDo7QBKmkLtbw78y4odcnUWN3Ku-14v1OU",
-  authDomain: "mypizzashop-7c553.firebaseapp.com",
-  projectId: "mypizzashop-7c553",
-  storageBucket: "mypizzashop-7c553.appspot.com",
-  messagingSenderId: "768401741034",
-  appId: "1:768401741034:web:2393952040570433d23393",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKETS,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPId,
 };
 
 // Initialize Firebase

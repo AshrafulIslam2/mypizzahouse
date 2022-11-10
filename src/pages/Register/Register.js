@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const { createUser, loginwithgoogle } = useContext(authContext);
   const HandleNewUser = (event) => {
     event.preventDefault();
@@ -18,8 +20,7 @@ const Register = () => {
         console.log(user);
         form.reset();
         toast("Register successFull !");
-
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("this is error", error);
@@ -31,7 +32,7 @@ const Register = () => {
         const user = userCredential.user;
         console.log(user);
         toast("Register successFull !");
-        navigate("/service");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("this is error", error);

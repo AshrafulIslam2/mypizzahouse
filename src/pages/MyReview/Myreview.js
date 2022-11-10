@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import UseSetTile from "../../Hooks/UseSetTitle";
 import ReviewTable from "./ReviewTable";
 
 const Myreview = () => {
   const { user } = useContext(authContext);
   const [myreview, Setreview] = useState([]);
+  UseSetTile("your Review");
   useEffect(() => {
     fetch(`http://localhost:4000/api/reviews?email=${user?.email}`)
       .then((res) => res.json())

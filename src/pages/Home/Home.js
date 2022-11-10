@@ -3,9 +3,11 @@ import Banner from "./Banner";
 import ServiceForHome from "./Service/ServiceForHome";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import UseSetTile from "../../Hooks/UseSetTitle";
 
 const Home = () => {
   const [service, SetServiceItem] = useState([]);
+  UseSetTile("Home");
   useEffect(() => {
     fetch("http://localhost:4000/api/limitservices")
       .then((res) => res.json())

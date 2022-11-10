@@ -10,7 +10,7 @@ const ReviewTable = ({ review, handleDelete }) => {
         <td className="p-3 text-white">
           <p>{review.title}</p>
         </td>
-        <td className="p-3 text-white">
+        <td className="p-3 text-white w-72">
           <p>{review.review}</p>
         </td>
         <td className="p-3 text-white">

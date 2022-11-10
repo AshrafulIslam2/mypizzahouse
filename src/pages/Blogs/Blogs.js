@@ -1,6 +1,8 @@
 import React from "react";
+import UseSetTile from "../../Hooks/UseSetTitle";
 
 const Blogs = () => {
+  UseSetTile("Blogs");
   return (
     <div className="grid grid-cols-2 gap-4 mx-10 my-10">
       <div className="max-w-lg p-6 overflow-hidden rounded-lg shadow dark:bg-gray-900 dark:text-gray-100">

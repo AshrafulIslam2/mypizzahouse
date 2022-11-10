@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import UseSetTile from "../../../../Hooks/UseSetTitle";
 
 const SigleService = () => {
+  UseSetTile("Sigle Service");
   const { _id, img, title, price, description, Size, Spicy, Slice } =
     useLoaderData();
   const [servicRevie, SetserviceReview] = useState([]);
@@ -14,7 +16,7 @@ const SigleService = () => {
 
   console.log(servicRevie);
   return (
-    <div className="grid grid-cols-12 ">
+    <div className="grid grid-cols-12  mb-40">
       <div className="col-span-9">
         <section className="dark:bg-gray-800  dark:text-gray-100 ">
           <div className="container flex flex-col-reverse mx-auto w-full  lg:flex-row">

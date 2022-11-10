@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const { loginwithEmail, loginwithgoogle } = useContext(authContext);
   const handleloginwithemail = (event) => {
     event.preventDefault();
@@ -19,7 +19,7 @@ const Login = () => {
         console.log(user);
         form.reset();
         toast("Login successFull !");
-        navigate("/service");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("this is error", error);
@@ -32,7 +32,8 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         toast("Login successFull !");
-        navigate("/service");
+
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("this is error", error);

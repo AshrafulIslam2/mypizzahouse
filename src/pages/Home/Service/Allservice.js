@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import UseSetTile from "../../../Hooks/UseSetTitle";
 
 const Allservice = ({ service }) => {
   const { img, title, description, _id } = service;
+  UseSetTile("All Service");
   return (
     <div className="max-w-lg mx-auto my-10 rounded-md shadow-md bg-gray-800 text-gray-100">
       <PhotoProvider>

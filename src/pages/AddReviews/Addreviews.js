@@ -1,8 +1,13 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import UseSetTile from "../../Hooks/UseSetTitle";
 
 const Addreviews = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  UseSetTile("Add review");
+  const from = location.state?.from?.pathname || "/service";
   const { user } = useContext(authContext);
   const { _id, img, title } = useLoaderData();
   const handlereview = (event) => {
@@ -31,6 +36,7 @@ const Addreviews = () => {
       .then((data) => {
         form.reset();
         console.log(data);
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
   };

@@ -1,7 +1,9 @@
 import { error } from "daisyui/src/colors";
 import { ToastContainer, toast } from "react-toastify";
+import UseSetTile from "../../Hooks/UseSetTitle";
 
 const AddService = () => {
+  UseSetTile("Add Service");
   const addservice = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -29,6 +31,7 @@ const AddService = () => {
       .then((data) => {
         console.log(data);
         form.reset();
+        toast("Service Added");
       })
       .catch((error = console.error(error)));
   };
