@@ -20,10 +20,15 @@ const Addreviews = () => {
       rating,
       review,
     };
-    console.log(allreview);
+    fetch("http://localhost:4000/api/reviews", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(allreview),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
   };
-
-  console.log(user);
   return (
     <section className="p-6 text-amber-600">
       <div className="text-center text-4xl font-bold  leading-loose tracking-widest">
