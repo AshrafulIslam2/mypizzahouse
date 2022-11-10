@@ -4,7 +4,7 @@ import Allservice from "./Allservice";
 
 const Service = () => {
   const [allservices, SetService] = useState([]);
-  const { loader, setLodaer } = useContext(authContext);
+  const { loader } = useContext(authContext);
   console.log(loader);
 
   useEffect(() => {

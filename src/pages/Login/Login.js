@@ -32,6 +32,7 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         toast("Login successFull !");
+        navigate("/service");
       })
       .catch((error) => {
         console.log("this is error", error);
