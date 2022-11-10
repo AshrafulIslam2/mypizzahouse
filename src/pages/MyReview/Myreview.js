@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import ReviewTable from "./ReviewTable";
 
@@ -21,14 +21,15 @@ const Myreview = () => {
       res.json().then((data) => {
         const remaining = myreview.filter((myrv) => myrv._id !== id);
         Setreview(remaining);
-        console.log(data);
+        toast("Deleted successFull !");
       })
     );
   };
   console.log(myreview);
   return (
     <div>
-      {myreview ? (
+      <ToastContainer />
+      {myreview !== [] && (
         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
           <h2 className="mb-4 text-2xl font-semibold leading-tight">
             Invoices
@@ -53,11 +54,10 @@ const Myreview = () => {
             </table>
           </div>
         </div>
-      ) : (
-        <div>
-          {" "}
-          <h1>Nooo Reviwes Found</h1>
-        </div>
+      )}
+
+      {myreview === null && (
+        <div className="text-center mt-52"> Noo Review</div>
       )}
     </div>
   );
